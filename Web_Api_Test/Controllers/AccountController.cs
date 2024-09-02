@@ -20,7 +20,7 @@ namespace Web_Api_Test.Controllers
         [Route("Login")]
         [HttpPost]
         // GET: Account
-        public IHttpActionResult Login(User user)
+        public IHttpActionResult Login(SignUp user)
         {
             var userName = user.UserName;
             var password = user.Password;
@@ -40,10 +40,6 @@ namespace Web_Api_Test.Controllers
 
         public object GetToken(User user)
         {
-            //var roleNames = (from ur in db.UserRoles
-            //                 join r in db.Roles on ur.RoleID equals r.RoleID
-            //                 where ur.UserID == user.UserID
-            //                 select r.RoleName).ToList();
 
             String key = "ERMN05OPLoDvbTTa/QkqLNMI7cPLguaRyHzyg7n5qNBVjQmtBhz4SzYh4NBVCXi3KJHlSXKP+oi2+bXr6CUYTR==";
             var issuer = "https://localhost:44358/";

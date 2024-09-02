@@ -19,6 +19,13 @@
         <AssociationConnector Association="Demo1Model.FK_UserRole_Role" ManuallyRouted="false" />
         <AssociationConnector Association="Demo1Model.FK_Student_Teacher" ManuallyRouted="false" />
         <AssociationConnector Association="Demo1Model.FK_UserRole_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Demo1Model.C__EFMigrationsHistory" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Demo1Model.Patient" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Demo1Model.product" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Demo1Model.Province" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Demo1Model.SignUp" Width="1.5" PointX="9.75" PointY="9.75" />
+        <EntityTypeShape EntityType="Demo1Model.Employee_vw_1" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Demo1Model.vw_Sales" Width="1.5" PointX="12.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

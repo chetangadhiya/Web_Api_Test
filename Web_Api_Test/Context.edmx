@@ -4,7 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Demo1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Demo1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Course">
           <Key>
             <PropertyRef Name="CourseId" />
@@ -25,6 +32,32 @@
           <Property Name="Department" Type="nvarchar" MaxLength="50" />
           <Property Name="Salary" Type="decimal" Precision="10" Scale="2" />
           <Property Name="HiredDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="Adrress" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -53,6 +86,17 @@
           <Property Name="SchoolName" Type="nvarchar" MaxLength="30" />
           <Property Name="S_Address" Type="nvarchar" MaxLength="50" />
           <Property Name="S_ZipCode" Type="int" />
+        </EntityType>
+        <EntityType Name="SignUp">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -92,6 +136,60 @@
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Demo1.dbo.Employee_vw_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Employee_vw_1">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="Age" />
+            <PropertyRef Name="Department" />
+            <PropertyRef Name="Salary" />
+            <PropertyRef Name="HiredDate" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+            <PropertyRef Name="Expr3" />
+            <PropertyRef Name="Expr4" />
+            <PropertyRef Name="Expr5" />
+            <PropertyRef Name="Expr6" />
+            <PropertyRef Name="Expr7" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Salary" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="HiredDate" Type="date" Nullable="false" />
+          <Property Name="Expr1" Type="int" Nullable="false" />
+          <Property Name="Expr2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Expr3" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Expr4" Type="int" Nullable="false" />
+          <Property Name="Expr5" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Expr6" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Expr7" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Demo1.dbo.vw_Sales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Sales">
+          <Key>
+            <PropertyRef Name="SaleID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="PriceSale" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Region" />
+          </Key>
+          <Property Name="SaleID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="PriceSale" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Student_Course">
           <End Role="Course" Type="Self.Course" Multiplicity="1" />
@@ -153,16 +251,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        
         <EntityContainer Name="Demo1ModelStoreContainer">
+          <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCHOOL" EntityType="Self.SCHOOL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SignUp" EntityType="Self.SignUp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_vw_1" EntityType="Self.Employee_vw_1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Employee_vw_1].[EmployeeId] AS [EmployeeId], 
+    [Employee_vw_1].[FirstName] AS [FirstName], 
+    [Employee_vw_1].[LastName] AS [LastName], 
+    [Employee_vw_1].[Age] AS [Age], 
+    [Employee_vw_1].[Department] AS [Department], 
+    [Employee_vw_1].[Salary] AS [Salary], 
+    [Employee_vw_1].[HiredDate] AS [HiredDate], 
+    [Employee_vw_1].[Expr1] AS [Expr1], 
+    [Employee_vw_1].[Expr2] AS [Expr2], 
+    [Employee_vw_1].[Expr3] AS [Expr3], 
+    [Employee_vw_1].[Expr4] AS [Expr4], 
+    [Employee_vw_1].[Expr5] AS [Expr5], 
+    [Employee_vw_1].[Expr6] AS [Expr6], 
+    [Employee_vw_1].[Expr7] AS [Expr7]
+    FROM [dbo].[Employee_vw_1] AS [Employee_vw_1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Sales" EntityType="Self.vw_Sales" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Sales].[SaleID] AS [SaleID], 
+    [vw_Sales].[ProductID] AS [ProductID], 
+    [vw_Sales].[ProductName] AS [ProductName], 
+    [vw_Sales].[Quantity] AS [Quantity], 
+    [vw_Sales].[PriceSale] AS [PriceSale], 
+    [vw_Sales].[Date] AS [Date], 
+    [vw_Sales].[Region] AS [Region]
+    FROM [dbo].[vw_Sales] AS [vw_Sales]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Student_Course" Association="Self.FK_Student_Course">
             <End Role="Course" EntitySet="Course" />
             <End Role="Student" EntitySet="Student" />
@@ -184,8 +317,7 @@
             <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Demo1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -377,7 +509,108 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UserRole" EntitySet="UserRoles" />
           </AssociationSet>
+          <EntitySet Name="C__EFMigrationsHistory" EntityType="Demo1Model.C__EFMigrationsHistory" />
+          <EntitySet Name="Patients" EntityType="Demo1Model.Patient" />
+          <EntitySet Name="products" EntityType="Demo1Model.product" />
+          <EntitySet Name="Provinces" EntityType="Demo1Model.Province" />
+          <EntitySet Name="SignUps" EntityType="Demo1Model.SignUp" />
+          <EntitySet Name="Employee_vw_1" EntityType="Demo1Model.Employee_vw_1" />
+          <EntitySet Name="vw_Sales" EntityType="Demo1Model.vw_Sales" />
         </EntityContainer>
+        <EntityType Name="C__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="Adrress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SignUp">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee_vw_1">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="Age" />
+            <PropertyRef Name="Department" />
+            <PropertyRef Name="Salary" />
+            <PropertyRef Name="HiredDate" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+            <PropertyRef Name="Expr3" />
+            <PropertyRef Name="Expr4" />
+            <PropertyRef Name="Expr5" />
+            <PropertyRef Name="Expr6" />
+            <PropertyRef Name="Expr7" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Department" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="HiredDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
+          <Property Name="Expr2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr3" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr4" Type="Int32" Nullable="false" />
+          <Property Name="Expr5" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr6" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Expr7" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="vw_Sales">
+          <Key>
+            <PropertyRef Name="SaleID" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="PriceSale" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Region" />
+          </Key>
+          <Property Name="SaleID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="PriceSale" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Region" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -478,6 +711,88 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__EFMigrationsHistory">
+            <EntityTypeMapping TypeName="Demo1Model.C__EFMigrationsHistory">
+              <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="Demo1Model.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Adrress" ColumnName="Adrress" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="Demo1Model.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="Demo1Model.Province">
+              <MappingFragment StoreEntitySet="Provinces">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SignUps">
+            <EntityTypeMapping TypeName="Demo1Model.SignUp">
+              <MappingFragment StoreEntitySet="SignUp">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_vw_1">
+            <EntityTypeMapping TypeName="Demo1Model.Employee_vw_1">
+              <MappingFragment StoreEntitySet="Employee_vw_1">
+                <ScalarProperty Name="Expr7" ColumnName="Expr7" />
+                <ScalarProperty Name="Expr6" ColumnName="Expr6" />
+                <ScalarProperty Name="Expr5" ColumnName="Expr5" />
+                <ScalarProperty Name="Expr4" ColumnName="Expr4" />
+                <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="HiredDate" ColumnName="HiredDate" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Sales">
+            <EntityTypeMapping TypeName="Demo1Model.vw_Sales">
+              <MappingFragment StoreEntitySet="vw_Sales">
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PriceSale" ColumnName="PriceSale" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="SaleID" ColumnName="SaleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
