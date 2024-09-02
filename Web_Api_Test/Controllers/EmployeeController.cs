@@ -9,7 +9,7 @@ using System.Web.Http.Cors;
 namespace Web_Api_Test.Controllers
 {
     [RoutePrefix("api/Employee")]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [
 EnableCors(origins:
 "*"
